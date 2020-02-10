@@ -30,19 +30,12 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.viewModelValue.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(activity, "$it", Toast.LENGTH_SHORT).show()
-        })
-        viewModel.viewModelSquareValue.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(activity, "$it", Toast.LENGTH_SHORT).show()
-            viewModel.viewModelSquareValue.removeObservers(viewLifecycleOwner)
-        })
         viewModel.viewModelEmitValue.observe(viewLifecycleOwner, Observer {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
         })
 
-        button1.setOnClickListener { viewModel.viewModelGetNextValue() }
-        button2.setOnClickListener { viewModel.viewModelGetSquareValue(++x) }
+        button1.setOnClickListener {  }
+        button2.setOnClickListener {  }
         button3.setOnClickListener {
             viewModel.viewModelEmitLiveFunction(++x)
             viewModel.viewModelEmitFunctionValue.observe(viewLifecycleOwner, Observer {
